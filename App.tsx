@@ -32,6 +32,7 @@ type SectionProps = PropsWithChildren<{
 import Product from './src/views/fruitList';
 import StyleList from './src/views/styleList';
 import FlexList  from './src/views/flexList';
+import StateList  from './src/views/stateList';
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -78,6 +79,7 @@ function App(): React.JSX.Element {
         <Product></Product>
         <StyleList></StyleList>
         <FlexList></FlexList>
+        <StateList></StateList>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
