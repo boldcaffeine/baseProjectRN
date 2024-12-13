@@ -29,16 +29,7 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-
-
-function Product({product = {name: '苹果', price: '1元'} }) {
-  return (
-    <View style={{flexDirection: 'row', marginTop: 5}}>
-      <Text style={{flex: 1}}>{product.name}</Text>
-      <Text style={{width: 50}}>{product.price}</Text>
-    </View>
-  );
-}
+import Product from './src/views/fruitList';
 
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
