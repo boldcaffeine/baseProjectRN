@@ -36,7 +36,7 @@ import StateList from './src/views/stateList';
 import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
-
+import InfiniteList from './src/views/infiniteList';
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -87,6 +87,7 @@ function App(): React.JSX.Element {
         <ImageList></ImageList>
         <ButtonList></ButtonList>
         <InputList></InputList>
+        <InfiniteList></InfiniteList>
        
         <View
           style={{
