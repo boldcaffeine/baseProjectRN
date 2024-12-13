@@ -4,7 +4,7 @@ import {View, Image} from 'react-native';
 // 方案一：正确
 const dianxinIcon = require('./q.jpeg');
 
-export default function StyleList() {
+export default function ImageList() {
   return (
     <View>
       <Image style={{width: '100%', height: 400}} source={dianxinIcon} />

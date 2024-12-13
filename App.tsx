@@ -34,6 +34,9 @@ import StyleList from './src/views/styleList';
 import FlexList from './src/views/flexList';
 import StateList from './src/views/stateList';
 import ImageList from './src/views/imageList';
+import ButtonList from './src/views/buttonList';
+
+
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -82,6 +85,7 @@ function App(): React.JSX.Element {
         <FlexList></FlexList>
         <StateList></StateList>
         <ImageList></ImageList>
+        <ButtonList></ButtonList>
        
         <View
           style={{
