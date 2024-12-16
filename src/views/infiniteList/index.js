@@ -1,7 +1,8 @@
-import {Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
+import {Text, SafeAreaView, StyleSheet, Pressable,View} from 'react-native';
 
 import AlexScrollView from './scrollView';
 import AlexFlatList from './flatList';
+import AlexRecyclerListView from './recyclerListView';
 // 1  ScrollView：渲染所有内容的滚动组件
 
 // 2  FlatList：按需渲染的列表组件
@@ -14,6 +15,13 @@ import AlexFlatList from './flatList';
 {
   /* <AlexScrollView></AlexScrollView> */
 }
+{
+  /* <AlexFlatList></AlexFlatList> */
+}
 export default function InfiniteList() {
-  return <AlexFlatList></AlexFlatList>;
+  return (
+    <View style={{flex: 1}}>
+      <AlexRecyclerListView></AlexRecyclerListView>{' '}
+    </View>
+  );
 }
