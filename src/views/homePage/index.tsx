@@ -1,9 +1,18 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+import {QueryClient, QueryClientProvider, focusManager} from 'react-query';
+import TopBar from './features/TopBar';
+console.log(focusManager);
+
+const queryClient = new QueryClient({
+  defaultOptions: {queries: {retry: 2}},
+});
 
 export default function HomePage() {
   return (
-    <View>
-      <Text>333666</Text>
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <View>
+        <TopBar></TopBar>
+      </View>
+    </QueryClientProvider>
   );
 }
