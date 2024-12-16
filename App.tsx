@@ -76,7 +76,8 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
+      <InfiniteList></InfiniteList>
+     {false && <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
@@ -87,8 +88,7 @@ function App(): React.JSX.Element {
         <ImageList></ImageList>
         <ButtonList></ButtonList>
         <InputList></InputList>
-        <InfiniteList></InfiniteList>
-       
+      
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -109,6 +109,7 @@ function App(): React.JSX.Element {
           <LearnMoreLinks />
         </View>
       </ScrollView>
+      }
     </SafeAreaView>
   );
 }
