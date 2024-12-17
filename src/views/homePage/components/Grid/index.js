@@ -30,11 +30,11 @@ export default class Grid extends PureComponent {
     /**
      * 外部容器的样式
      */
-    style: ViewPropTypes.style,
+    style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     /**
      * 每个格子的样式
      */
-    itemStyle: ViewPropTypes.style,
+    itemStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     /**
      * 格子 icon 的样式
      */
@@ -71,7 +71,12 @@ export default class Grid extends PureComponent {
         onPress={this.handleItemPress({icon, text, onPress}, index, data)}>
         <View style={[styles.item, {width, height}, itemStyle]}>
           {icon && (
-            <Image style={[styles.icon, iconStyle]} source={{uri: icon}} />
+            <Image
+              style={[styles.icon, iconStyle]}
+              source={{
+                uri: 'https://oss.onemad.com/performad/local/20240620/03bc7438a49601f8d037c5dd5f9d3ee5.jpg',
+              }}
+            />
           )}
           <Text style={[styles.text, textStyle]}>{text}</Text>
         </View>
@@ -81,7 +86,8 @@ export default class Grid extends PureComponent {
 
   render() {
     const {data, style, renderItem} = this.props;
-    const items = data.map(renderItem || this.renderItem);
+    const items = data.map(renderItem || this.renderItem).slice(0, 10);
+  
 
     return <View style={[styles.wrapper, style]}>{items}</View>;
   }

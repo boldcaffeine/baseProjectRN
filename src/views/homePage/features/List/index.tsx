@@ -7,14 +7,15 @@ import {
   BaseLayoutProvider,
 } from 'recyclerlistview';
 import {WaterfallLayoutProvider} from '../../components/RecyclerListView/WaterfallLayoutProvider';
-import {useInfiniteQuery} from 'react-query';
+import {useInfiniteQuery, useQuery} from 'react-query';
 import {
   queryRecyclerAnimals,
   RecyclerNFTs,
   RecyclerNFT,
   recyclerQueryOption,
 } from '../WaterFallCard';
-import {animalsUrl} from '../../api/homeAPI';
+import {iconsUrl, animalsUrl} from '../../api/homeAPI';
+import {queryRecyclerIcons, RecyclerIcons} from '../Icons';
 import RowRenderer from './RowRenderer';
 
 // RLV 的模板代码
@@ -31,7 +32,10 @@ function List() {
     queryRecyclerAnimals,
     recyclerQueryOption,
   );
-
+  const {data: recyclerIcons} = useQuery<RecyclerIcons>(
+    iconsUrl,
+    queryRecyclerIcons,
+  );
   // 格式处理
   const nfts = recyclerNFTs?.pages.reduce<RecyclerNFT[]>(
     (accumulator, page) => {
@@ -45,8 +49,8 @@ function List() {
   // 创建数据提供者
   let dp = new DataProvider((r1, r2) => r1.id !== r2.id);
   // 都请求回来时才渲染
-  if (nfts) {
-    dp = dp.cloneWithRows([...nfts]);
+  if (recyclerIcons && nfts) {
+    dp = dp.cloneWithRows([recyclerIcons, ...nfts]);
   }
   // 布局提供者
   // @ts-ignore
