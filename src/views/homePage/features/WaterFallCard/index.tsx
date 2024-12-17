@@ -1,3 +1,4 @@
+import React from 'react';
 import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import {queryAnimals, NFTType, NFTQueryType} from '../../api/homeAPI';
 import {FetchInfiniteQueryOptions} from 'react-query';
