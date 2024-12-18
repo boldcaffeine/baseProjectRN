@@ -1,39 +1,40 @@
-import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import Animated, {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+  Easing,
+  withSpring
+} from 'react-native-reanimated';
+import {View, Button} from 'react-native';
+import React from 'react';
 
-// import Animated, {
-//   useSharedValue,
-//   useAnimatedStyle,
-// } from 'react-native-reanimated';
+export default function AnimatedStyleUpdateExample(): React.ReactElement {
+  const randomWidth = useSharedValue(10);
 
-function App() {
-  const [randomWidth, setRandomWidth] = useState(10);
-  // const reanimatedRandomWidth = useSharedValue(10);
-  // State 示例代码
-  const style = {
-    width: randomWidth,
-  };
+  const style = useAnimatedStyle(() => {
+    console.log('==Animated==');
+    return {
+      width: withSpring(randomWidth.value),
 
+    };
+  });
 
-  
-  // reanimated正确示范
-  // const styleReanimated = useAnimatedStyle(() => {
-  //   return {
-  //     width: reanimatedRandomWidth.value,
-  //   };
-  // });
+  console.log('==render==');
 
   return (
     <View>
-      <View>
-        <Text>reanimated111</Text>
-      </View>
-
-      <View style={[{width: 100}, style]} />
-
-
+      <Animated.View
+        style={[
+          {width: 100, height: 30, backgroundColor: 'cornflowerblue'},
+          style,
+        ]}
+      />
+      <Button
+        title="切换宽度"
+        onPress={() => {
+          randomWidth.value = Math.random() * 350;
+        }}
+      />
     </View>
   );
 }
-
-export default App;
