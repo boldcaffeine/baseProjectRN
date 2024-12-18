@@ -20,7 +20,7 @@ function SyncTextInput() {
     <View>
       <Text> 333</Text>
       <TextInput
-        autoFocus
+    
         onChangeText={text => {
           const time = Date.now();
           while (Date.now() - time <= 1000) {}

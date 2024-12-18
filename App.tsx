@@ -36,8 +36,9 @@ import StateList from './src/views/stateList';
 import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
+import AlexReanimated from './src/views/reanimated';
 // import InfiniteList from './src/views/infiniteList';
-import HomePage from './src/views/homePage';
+// import HomePage from './src/views/homePage';
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -79,42 +80,41 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       {/* <InfiniteList></InfiniteList> */}
-      <HomePage></HomePage>
-      {false &&
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Header />
-          <Product></Product>
-          <StyleList></StyleList>
-          <FlexList></FlexList>
-          <StateList></StateList>
-          <ImageList></ImageList>
-          <ButtonList></ButtonList>
-          <InputList></InputList>
+      {/* <HomePage></HomePage> */}
 
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Section title="Step One">
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Section>
-            <Section title="See Your Changes">
-              <ReloadInstructions />
-            </Section>
-            <Section title="Debug">
-              <DebugInstructions />
-            </Section>
-            <Section title="Learn More">
-              Read the docs to discover what to do next:
-            </Section>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-        }
-      
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <Product></Product>
+        <StyleList></StyleList>
+        <FlexList></FlexList>
+        <StateList></StateList>
+        <ImageList></ImageList>
+        <ButtonList></ButtonList>
+        <InputList></InputList>
+        <AlexReanimated></AlexReanimated>
+
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <Section title="Step One">
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            screen and then come back to see your edits.
+          </Section>
+          <Section title="See Your Changes">
+            <ReloadInstructions />
+          </Section>
+          <Section title="Debug">
+            <DebugInstructions />
+          </Section>
+          <Section title="Learn More">
+            Read the docs to discover what to do next:
+          </Section>
+          <LearnMoreLinks />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
