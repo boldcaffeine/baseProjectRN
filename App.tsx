@@ -36,7 +36,7 @@ import StateList from './src/views/stateList';
 import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
-import AlexReanimated from './src/views/reanimated';
+import AlexReanimated from './src/views/reanimated/gesture.tsx';
 // import InfiniteList from './src/views/infiniteList';
 // import HomePage from './src/views/homePage';
 function Section({children, title}: SectionProps): React.JSX.Element {
