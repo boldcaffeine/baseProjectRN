@@ -15,7 +15,9 @@ const DraggableBox = () => {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
-  const onGestureEvent = event => {
+ 
+
+  const onGestureEvent = (event: any) => {
     translateX.value = event.translationX;
     translateY.value = event.translationY;
   };
