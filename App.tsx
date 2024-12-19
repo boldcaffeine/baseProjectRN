@@ -37,7 +37,7 @@ import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
 import AlexReanimated from './src/views/reanimated/gesture.tsx';
-// import AlexReactNavigation from './src/views/reactNavigation';
+import AlexReactNavigation from './src/views/reactNavigation';
 
 // import InfiniteList from './src/views/infiniteList';
 // import HomePage from './src/views/homePage';
@@ -67,7 +67,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-function App(): React.JSX.Element {
+export function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -142,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default AlexReactNavigation;
