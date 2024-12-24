@@ -37,7 +37,8 @@ import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
 import AlexReanimated from './src/views/reanimated/gesture.tsx';
-import AlexReactNavigation from './src/views/reactNavigation';
+// import AlexReactNavigation from './src/views/reactNavigation';
+import AlexReactNavigation from './src/views/reactNavigation/indexTwo.tsx';
 
 // import InfiniteList from './src/views/infiniteList';
 // import HomePage from './src/views/homePage';
