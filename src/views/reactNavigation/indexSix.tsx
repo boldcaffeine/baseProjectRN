@@ -1,20 +1,20 @@
-import React from 'react';
-import {Text, View, Pressable, Image, StyleSheet, Button} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import * as React from 'react';
+import {View, Text, StyleSheet, Pressable, Button} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import type {ParamListBase} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="BottomTabHome">
@@ -26,12 +26,15 @@ export default function App() {
           component={BottomTabHome}
         />
         <Stack.Screen name="Page" component={Page} />
-        <Tab.Screen
-          name="Messages"
-          component={Page}
-          options={{title: '消息'}}
+        <Stack.Screen
+          options={{
+            presentation: 'transparentModal',
+            animation: 'fade',
+            headerShown: false,
+          }}
+          name="Modal"
+          component={DialogScreen}
         />
-        <Tab.Screen name="My" component={Page} options={{title: '我'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -54,19 +57,20 @@ function BottomTabHome() {
     </Tab.Navigator>
   );
 }
+
 function TopTabHome() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <TopTab.Navigator initialRouteName="TopTabDiscover">
         <TopTab.Screen
-          name="TopTabDiscover"
-          component={TopTabDiscover}
-          options={{title: '发现'}}
-        />
-        <TopTab.Screen
           name="Follow"
           component={Page}
           options={{title: '关注'}}
+        />
+        <TopTab.Screen
+          name="TopTabDiscover"
+          component={TopTabDiscover}
+          options={{title: '发现'}}
         />
         <TopTab.Screen
           name="Location"
@@ -153,3 +157,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#0ac',
   },
 });
+
+export default App;
