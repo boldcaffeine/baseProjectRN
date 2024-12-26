@@ -8,7 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';  // 安全区
 const Stack = createNativeStackNavigator();
 
 // 首页组件
-function HomeScreen({ navigation }) {
+function HomeScreen({ navigation }:any) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

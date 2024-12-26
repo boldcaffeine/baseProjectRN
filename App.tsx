@@ -39,7 +39,10 @@ import InputList from './src/views/inputList';
 import AlexReanimated from './src/views/reanimated/gesture.tsx';
 
 // import AlexReactNavigation from './src/views/reactNavigation/index.tsx';
-import AlexReactNavigation from './src/views/reactNavigation/indexTwo.tsx';
+// import AlexReactNavigation from './src/views/reactNavigation/indexTwo.tsx';
+// import AlexReactNavigation from './src/views/reactNavigation/indexThree.tsx';
+// import AlexReactNavigation from './src/views/reactNavigation/indexFour.tsx';
+import AlexReactNavigation from './src/views/reactNavigation/indexFive.tsx';
 
 
 // import InfiniteList from './src/views/infiniteList';
