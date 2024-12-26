@@ -37,8 +37,10 @@ import ImageList from './src/views/imageList';
 import ButtonList from './src/views/buttonList';
 import InputList from './src/views/inputList';
 import AlexReanimated from './src/views/reanimated/gesture.tsx';
-// import AlexReactNavigation from './src/views/reactNavigation';
+
+// import AlexReactNavigation from './src/views/reactNavigation/index.tsx';
 import AlexReactNavigation from './src/views/reactNavigation/indexTwo.tsx';
+
 
 // import InfiniteList from './src/views/infiniteList';
 // import HomePage from './src/views/homePage';
@@ -68,7 +70,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-export function App(): React.JSX.Element {
+ function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -76,7 +78,6 @@ export function App(): React.JSX.Element {
     flex: 1,
   };
 
- 
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -144,3 +145,5 @@ const styles = StyleSheet.create({
 });
 
 export default AlexReactNavigation;
+
+// export default App

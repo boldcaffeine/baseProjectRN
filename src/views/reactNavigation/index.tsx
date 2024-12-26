@@ -1,26 +1,48 @@
-// In App.js in a new project
+import React from 'react';
+import { SafeAreaView, View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';  // 安全区处理
 
-import * as React from 'react';
-import {View, Text} from 'react-native';
-import {createStaticNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// 创建一个栈导航器
+const Stack = createNativeStackNavigator();
 
-function HomeScreen() {
+// 首页组件
+function HomeScreen({ navigation }) {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen Test</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate('Details')}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
-const RootStack = createNativeStackNavigator({
-  screens: {
-    Home: HomeScreen,
-  },
-});
+// 详情页组件
+function DetailsScreen() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Details Screen</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
 
-const Navigation = createStaticNavigation(RootStack);
-
+// 应用程序的主组件
 export default function App() {
-  return <Navigation />;
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
 }
