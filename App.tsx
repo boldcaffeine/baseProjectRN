@@ -43,7 +43,8 @@ import AlexReanimated from './src/views/reanimated/gesture.tsx';
 // import AlexReactNavigation from './src/views/reactNavigation/indexThree.tsx';
 // import AlexReactNavigation from './src/views/reactNavigation/indexFour.tsx';
 // import AlexReactNavigation from './src/views/reactNavigation/indexFive.tsx';
-import AlexReactNavigation from './src/views/reactNavigation/indexSix.tsx';
+// import AlexReactNavigation from './src/views/reactNavigation/indexSix.tsx';
+import AlexRedux from './src/views/redux/index.js';
 
 
 // import InfiniteList from './src/views/infiniteList';
@@ -148,6 +149,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AlexReactNavigation;
+// export default AlexReactNavigation;
 
+export default AlexRedux
 // export default App

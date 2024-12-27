@@ -29,7 +29,9 @@
     "react-native-safe-area-context": "^5.0.0",
     "react-native-screens": "^4.4.0",
     "react-query": "^3.39.3",
+    "react-redux": "^9.2.0",
     "recyclerlistview": "^4.2.1",
+    "redux": "^5.0.1",
     "rimraf": "latest"
   },
   "devDependencies": {
