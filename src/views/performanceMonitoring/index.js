@@ -3,7 +3,7 @@ import uuid from 'react-native-uuid';
 import {MMKV} from 'react-native-mmkv';
 import DeviceInfo from 'react-native-device-info';
 // 用户唯一标示
-
+import MonitorExample from './monitorExample';
 export default function App() {
   let userId = '';
   const storage = new MMKV();
@@ -43,6 +43,7 @@ export default function App() {
           style={baseStyle}>
           <Text>按钮</Text>
         </Pressable>
+        <MonitorExample /> {/* 使用错误边界组件 */}
       </View>
     </SafeAreaView>
   );
