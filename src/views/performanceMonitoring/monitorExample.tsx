@@ -1,18 +1,53 @@
-import React, {ErrorInfo} from 'react';
+// import * as Sentry from '@sentry/react-native';
+import React, { ErrorInfo } from 'react';
 import {Text, View} from 'react-native';
 import MoniterSDK from './MonitorSDK';
+
 const moniter = new MoniterSDK();
 
-console.log(moniter);
+export default class MonitorExample extends React.Component<{}, {hasError: boolean ,renderError: boolean}> {
+  constructor(props: {} | Readonly<{}>) {
+    super(props);
+    this.state = {hasError: false, renderError: false};
+  }
 
-export default class MonitorExample extends React.Component<
-  {},
-  {hasError: boolean; renderError: boolean}
-> {
+  // 渲染备用 UI
+  static getDerivedStateFromError() {
+    return {hasError: true};
+  }
+
+  // 打印错误信息
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    moniter.logComponentStack(error, info);
+  }
+
   render() {
+    if (this.state.hasError)  return <Text>JSX 报错了</Text>;
+
     return (
-      <View>
-        <Text>嘿嘿 我进行测试</Text>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+       
+       {/* <Text>herems: {(!!(global.HermesInternal as any)).toString()}</Text> */}
+        <Text
+          onPress={() => {
+            throw new Error('My first Sentry error!2222');
+          }}>
+          throw js error
+        </Text>
+        <Text onPress={() =>{
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                reject(new Error('抛出 Promise 报错'));
+              }, 0 );
+            })
+        }}>throw promise error</Text>
+        <Text
+          onPress={() => {
+            this.setState({renderError: true});
+          }}>
+          throw JSX error
+        </Text>
+        {this.state.renderError && <div></div>}
       </View>
     );
   }

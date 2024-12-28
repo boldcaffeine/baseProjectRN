@@ -14,24 +14,33 @@ interface DeviceInfoType {
 export default class MonitorSDK {
   userId: string;
   deviceInfo: DeviceInfoType;
+
   constructor() {
     this.userId = this.getUserId();
     this.deviceInfo = this.getDeviceInfo();
+    this.attachUnhandledRejectionHandler();
+    this.attachErrorHandler();
   }
+
   getUserId(): string {
+    // 用户唯一标示
     let userId = '';
+
     const storage = new MMKV();
     const hasUserId = storage.contains('userId');
+
+    // 用户曾经打开过 App
     if (hasUserId) {
       userId = storage.getString('userId') ?? 'default userId';
     } else {
       // 用户第一次打开 App
-      userId = uuid.v4() as string;
+      userId = uuid.v4() as string; // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
       storage.set('userId', userId);
     }
 
     return userId;
   }
+
   getDeviceInfo(): DeviceInfoType {
     return {
       systemName: DeviceInfo.getSystemName(), // iOS: "iOS" Android: "Android"
@@ -41,6 +50,7 @@ export default class MonitorSDK {
       appVersion: DeviceInfo.getVersion(), // iOS: "1.0" Android: "1.0"
     };
   }
+
   attachUnhandledRejectionHandler(): void {
     const rejectionTrackingOptions = {
       allRejections: true,
@@ -73,10 +83,12 @@ export default class MonitorSDK {
       },
     };
 
+    // console.log('global?.HermesInternal', global?.HermesInternal)
     // @ts-ignore
     if (global?.HermesInternal?.hasPromise?.()) {
       console.log('HermesInternal?.hasPromise');
       // @ts-ignore
+     
       global.HermesInternal?.enablePromiseRejectionTracker?.(
         rejectionTrackingOptions,
       );
@@ -86,9 +98,11 @@ export default class MonitorSDK {
         enable: (arg: unknown) => void;
       } = require('promise/setimmediate/rejection-tracking');
       tracking.disable();
+
       tracking.enable(rejectionTrackingOptions);
     }
   }
+
   attachErrorHandler(): void {
     const defaultHandler =
       ErrorUtils.getGlobalHandler && ErrorUtils.getGlobalHandler();
@@ -110,9 +124,11 @@ export default class MonitorSDK {
           2,
         )}`,
       );
+      // console.log(typeof error.stack,error.stack);
       defaultHandler(error, isFatal);
     });
   }
+
   logComponentStack(error: Error, info: ErrorInfo): void {
     console.log(
       `Component Stack: ${JSON.stringify(

@@ -45,7 +45,7 @@ import AlexReanimated from './src/views/reanimated/gesture.tsx';
 // import AlexReactNavigation from './src/views/reactNavigation/indexFive.tsx';
 // import AlexReactNavigation from './src/views/reactNavigation/indexSix.tsx';
 import AlexRedux from './src/views/redux/index.js';
-import AlexPerformanceMonitoring from './src/views/performanceMonitoring/index.js';
+import AlexPerformanceMonitoring from './src/views/performanceMonitoring/index.tsx';
 
 
 // import InfiniteList from './src/views/infiniteList';
